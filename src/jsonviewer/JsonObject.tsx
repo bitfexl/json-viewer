@@ -16,15 +16,13 @@ export function JsonObject({ value }: JsonObjectProps) {
             openingBracket={<JsonText type="curly_bracket" value="{"></JsonText>}
             closingBracket={<JsonText type="curly_bracket" value="}"></JsonText>}
         >
-            <>
-                {keys.map((key, i) => (
-                    <JsonIndent addLevel={1}>
-                        <JsonString value={key}></JsonString>
-                        <JsonText type="colon" value=": "></JsonText>
-                        <JsonElement value={value[key]} parent="object" isLast={i + 1 == keys.length}></JsonElement>
-                    </JsonIndent>
-                ))}
-            </>
+            {keys.map((key, i) => (
+                <JsonIndent>
+                    <JsonString value={key}></JsonString>
+                    <JsonText type="colon" value=": "></JsonText>
+                    <JsonElement value={value[key]} parent="object" isLast={i + 1 == keys.length}></JsonElement>
+                </JsonIndent>
+            ))}
         </JsonBlock>
     );
 }

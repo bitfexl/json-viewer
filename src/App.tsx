@@ -27,8 +27,9 @@ export default function App() {
     };
 
     return (
-        <>
+        <div className="ml-60 mt-6 inline-block border border-black">
             <JsonElement value={json}></JsonElement>
-        </>
+            <pre>{JSON.stringify(json, null, 4)}</pre>
+        </div>
     );
 }

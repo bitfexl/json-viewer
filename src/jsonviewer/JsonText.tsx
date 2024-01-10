@@ -4,5 +4,5 @@ export interface JsonTextProps {
 }
 
 export function JsonText({ type, value }: JsonTextProps) {
-    return <pre className={`inline-block ${type == value ? "text-slate-900" : "text-slate-700"}`}>{value}</pre>;
+    return <pre className={`inline-block ${type == "value" ? "text-slate-900" : "text-slate-500"}`}>{value}</pre>;
 }

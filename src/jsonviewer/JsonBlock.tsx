@@ -17,7 +17,7 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
             <br />
             {jsonCtx.indentLevel == 0 ? <JsonIndent>{children}</JsonIndent> : children}
             <br />
-            <JsonIndent>{closingBracket}</JsonIndent>
+            <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>{closingBracket}</JsonIndent>
         </>
     );
 }
