@@ -1,7 +1,7 @@
-import { JsonBlock } from "./JsonBlock";
-import { JsonElement } from "./JsonElement";
-import { JsonIndent } from "./JsonIndent";
-import { JsonText } from "./JsonText";
+import { JsonBlock } from "../JsonBlock";
+import { JsonElement } from "../JsonElement";
+import { JsonIndent } from "../JsonIndent";
+import { JsonText } from "../JsonText";
 
 export interface JsonArrayProps {
     value: unknown[];

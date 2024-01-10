@@ -1,9 +1,9 @@
-import { JsonArray } from "./JsonArray";
-import { JsonBoolean } from "./JsonBoolean";
-import { JsonNull } from "./JsonNull";
-import { JsonNumber } from "./JsonNumber";
-import { JsonObject } from "./JsonObject";
-import { JsonString } from "./JsonString";
+import { JsonArray } from "./jsontypes/JsonArray";
+import { JsonBoolean } from "./jsontypes/JsonBoolean";
+import { JsonNull } from "./jsontypes/JsonNull";
+import { JsonNumber } from "./jsontypes/JsonNumber";
+import { JsonObject } from "./jsontypes/JsonObject";
+import { JsonString } from "./jsontypes/JsonString";
 import { JsonText } from "./JsonText";
 
 export interface JsonElementProps {

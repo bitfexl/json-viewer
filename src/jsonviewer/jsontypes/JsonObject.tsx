@@ -1,8 +1,8 @@
-import { JsonBlock } from "./JsonBlock";
-import { JsonElement } from "./JsonElement";
-import { JsonIndent } from "./JsonIndent";
+import { JsonBlock } from "../JsonBlock";
+import { JsonElement } from "../JsonElement";
+import { JsonIndent } from "../JsonIndent";
 import { JsonString } from "./JsonString";
-import { JsonText } from "./JsonText";
+import { JsonText } from "../JsonText";
 
 export interface JsonObjectProps {
     value: { [key: string]: unknown };

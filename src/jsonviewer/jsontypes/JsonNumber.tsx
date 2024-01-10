@@ -1,4 +1,4 @@
-import { JsonText } from "./JsonText";
+import { JsonText } from "../JsonText";
 
 export interface JsonNumberProps {
     value: number;
