@@ -5,12 +5,25 @@ import { JsonContext } from "./JsonContext";
 export interface JsonBlockProps {
     openingBracket: ReactNode;
     closingBracket: ReactNode;
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 export function JsonBlock({ openingBracket, closingBracket, children }: JsonBlockProps) {
     const [open, setOpen] = useState(true);
     const jsonCtx = useContext(JsonContext);
+
+    if (
+        children == null ||
+        (typeof (children as Iterable<unknown>)[Symbol.iterator] == "function" &&
+            (children as Iterable<unknown>)[Symbol.iterator]().next().done)
+    ) {
+        return (
+            <>
+                {openingBracket}
+                {closingBracket}
+            </>
+        );
+    }
 
     return (
         <>

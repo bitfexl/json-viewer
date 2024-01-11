@@ -17,7 +17,8 @@ export default function App() {
                         Abbrev: "ISO 8879:1986",
                         GlossDef: {
                             para: "A meta-markup language, used to create markup languages such as DocBook.",
-                            GlossSeeAlso: ["GML", "XML"],
+                            GlossSeeAlso: [1, 2, 3, NaN],
+                            asdf: {},
                         },
                         GlossSee: "markup",
                     },
