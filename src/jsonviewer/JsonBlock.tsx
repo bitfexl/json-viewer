@@ -40,10 +40,18 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
                 </button>
             </span>
 
-            <span style={{ display: open ? "initial" : "none" }}>
-                <br className="select-none" />
-                {jsonCtx.indentLevel == 0 ? <JsonIndent>{children}</JsonIndent> : children}
-                <br />
+            <span className="relative">
+                <span style={{ display: open ? "initial" : "none" }}>
+                    <br className="select-none" />
+                    {jsonCtx.indentLevel == 0 ? <JsonIndent>{children}</JsonIndent> : children}
+                    <br />
+                </span>
+
+                <span className="absolute h-full top-0 select-none -z-10">
+                    <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>
+                        <span className="absolute border top-6" style={{ height: "calc(100% - 3rem)" }}></span>
+                    </JsonIndent>
+                </span>
             </span>
 
             {open ? <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>{closingBracket}</JsonIndent> : closingBracket}
