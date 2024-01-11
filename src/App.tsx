@@ -1,36 +1,45 @@
+import { useState } from "react";
 import { JsonElement } from "./jsonviewer/JsonElement";
 
 export default function App() {
-    // const [count, setCount] = useState(0);
+    const [rawJson, setRawJson] = useState("");
 
-    const json = {
-        glossary: {
-            title: "example glossary",
-            GlossDiv: {
-                title: "S",
-                GlossList: {
-                    GlossEntry: {
-                        ID: "SGML",
-                        SortAs: "SGML",
-                        GlossTerm: "Standard Generalized Markup Language",
-                        Acronym: "SGML",
-                        Abbrev: "ISO 8879:1986",
-                        GlossDef: {
-                            para: "A meta-markup language, used to create markup languages such as DocBook.",
-                            GlossSeeAlso: [1, 2, 3, NaN],
-                            asdf: {},
-                        },
-                        GlossSee: "markup",
-                    },
-                },
-            },
-        },
-    };
+    let parsingSuccess = true;
+    let parsedJson;
+
+    try {
+        parsedJson = JSON.parse(rawJson);
+    } catch {
+        parsingSuccess = false;
+    }
 
     return (
-        <div className="ml-60 mt-6 inline-block border border-black">
-            <JsonElement value={json}></JsonElement>
-            <pre>{JSON.stringify(json, null, 4)}</pre>
+        <div className="ml-60 mt-6 inline-block">
+            <h1 className="font-bold text-2xl mb-4">JSON Viewer</h1>
+
+            <textarea
+                onChange={(e) => setRawJson(e.target.value)}
+                cols={80}
+                rows={20}
+                className="border border-slate-500"
+                placeholder="Enter json..."
+            ></textarea>
+
+            <br />
+            <br />
+
+            <i>Result:</i>
+
+            <br />
+            <br />
+
+            {parsingSuccess ? (
+                <JsonElement key={rawJson} value={parsedJson}></JsonElement>
+            ) : rawJson.length == 0 ? (
+                <p>Enter JSON to see result.</p>
+            ) : (
+                <p className="text-red-500">Error parsing JSON.</p>
+            )}
         </div>
     );
 }
