@@ -18,10 +18,12 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
             <span className="inline-flex flex-col align-middle ml-1 mr-1">
                 <button
                     onClick={() => setOpen(!open)}
-                    className="select-none border-blue-500 border-2 w-4 h-4 rounded-lg font-bold items-top"
+                    className="select-none border-blue-500 border-2 w-4 h-4 rounded-lg font-bold flex items-center justify-center"
                     style={{ lineHeight: 0 }}
                 >
-                    {open ? "-" : "+"}
+                    <div className="w-2 h-0 border-blue-500 border flex items-center justify-center">
+                        {!open && <div className="h-2 w-0 border-blue-500 border"></div>}
+                    </div>
                 </button>
             </span>
 
