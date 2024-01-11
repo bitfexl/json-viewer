@@ -49,7 +49,7 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
 
                 <span className="absolute h-full top-0 select-none -z-10">
                     <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>
-                        <span className="absolute border top-6" style={{ height: "calc(100% - 3rem)" }}></span>
+                        <span className="absolute top-6 border-l" style={{ height: "calc(100% - 3rem)" }}></span>
                     </JsonIndent>
                 </span>
             </span>
