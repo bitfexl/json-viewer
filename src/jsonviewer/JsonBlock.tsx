@@ -25,6 +25,8 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
         );
     }
 
+    const nextBracketColorIndex = jsonCtx.bracketColors.length > jsonCtx.bracketColorIndex + 1 ? jsonCtx.bracketColorIndex + 1 : 0;
+
     return (
         <>
             {openingBracket}
@@ -43,15 +45,19 @@ export function JsonBlock({ openingBracket, closingBracket, children }: JsonBloc
             <span className="relative">
                 <span style={{ display: open ? "initial" : "none" }}>
                     <br className="select-none" />
-                    {jsonCtx.indentLevel == 0 ? <JsonIndent>{children}</JsonIndent> : children}
+                    <JsonContext.Provider value={{ ...jsonCtx, bracketColorIndex: nextBracketColorIndex }}>
+                        {jsonCtx.indentLevel == 0 ? <JsonIndent>{children}</JsonIndent> : children}
+                    </JsonContext.Provider>
                     <br />
                 </span>
 
-                <span className="absolute h-full top-0 select-none -z-10">
-                    <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>
-                        <span className="absolute top-6 border-l" style={{ height: "calc(100% - 3rem)" }}></span>
-                    </JsonIndent>
-                </span>
+                {jsonCtx.displayIndentationLines && (
+                    <span className="absolute h-full top-0 select-none -z-10">
+                        <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>
+                            <span className="absolute top-6 border-l" style={{ height: "calc(100% - 3rem)" }}></span>
+                        </JsonIndent>
+                    </span>
+                )}
             </span>
 
             {open ? <JsonIndent addCurrentLevel={jsonCtx.indentLevel > 0 ? -1 : 0}>{closingBracket}</JsonIndent> : closingBracket}
