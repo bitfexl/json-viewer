@@ -5,6 +5,22 @@ import { JsonNumber } from "./jsontypes/JsonNumber";
 import { JsonObject } from "./jsontypes/JsonObject";
 import { JsonString } from "./jsontypes/JsonString";
 import { JsonText } from "./JsonText";
+import { JsonContext, DEFAULT_JSON_CONTEXT } from "./JsonContext";
+
+export interface StyledJsonElementProps {
+    value: unknown;
+    indent: number;
+    displayIndentationLines: boolean;
+    colorBrackets: boolean;
+}
+
+export function StyledJsonElement({ value, indent, displayIndentationLines, colorBrackets }: StyledJsonElementProps) {
+    return (
+        <JsonContext.Provider value={{ ...DEFAULT_JSON_CONTEXT, indent, displayIndentationLines, colorBrackets }}>
+            <JsonElement value={value}></JsonElement>
+        </JsonContext.Provider>
+    );
+}
 
 export interface JsonElementProps {
     value: unknown;
